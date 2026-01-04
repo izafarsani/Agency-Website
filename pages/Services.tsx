@@ -1,132 +1,104 @@
 
 import React from 'react';
-import { SERVICES } from '../constants';
-// Fix: Added MessageSquare to the lucide-react imports
-import { CheckCircle2, ArrowRight, Monitor, Smartphone, Globe, Code, ShoppingCart, Headset, MessageSquare } from 'lucide-react';
+import { useContent } from '../App';
+import { CheckCircle2, ArrowRight, Monitor, Smartphone, Globe, Code, ShoppingCart, MessageSquare, Cpu, Palette, Zap, Target, Users, BarChart3, TrendingUp } from 'lucide-react';
+
+const iconMap: any = { Globe, Cpu, Palette, Zap, Target, Users, BarChart3 };
 
 const Services: React.FC = () => {
-  // Filter only Web Dev related or highlight it first
-  const webDevService = SERVICES.find(s => s.id === 'web-design');
-  const otherServices = SERVICES.filter(s => s.id !== 'web-design');
-
-  const subServices = [
-    { icon: <Monitor className="w-6 h-6"/>, title: "Custom Web Design", desc: "Tailored UI/UX that aligns perfectly with your brand's unique identity." },
-    { icon: <Smartphone className="w-6 h-6"/>, title: "Responsive Layouts", desc: "Websites that look and perform perfectly on every device, from mobile to 4K." },
-    { icon: <ShoppingCart className="w-6 h-6"/>, title: "E-commerce Solutions", desc: "High-performance online stores built to maximize checkout conversions." },
-    { icon: <Code className="w-6 h-6"/>, title: "Custom Development", desc: "Specialized React, Next.js, or WordPress builds for complex requirements." },
-    { icon: <Globe className="w-6 h-6"/>, title: "SEO Optimization", desc: "Foundational SEO that ensures your site gets indexed and ranked properly." },
-    { icon: <Headset className="w-6 h-6"/>, title: "Ongoing Support", desc: "We don't just launch and leave. We provide active maintenance and growth support." }
-  ];
+  const { content } = useContent();
+  const SERVICES = content.services;
 
   return (
     <div className="pt-20">
-      {/* 1. Hero / Page Header */}
-      <header className="py-24 bg-slate-50 border-b border-slate-100 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
-          <div className="grid grid-cols-12 h-full">
-            {[...Array(12)].map((_, i) => <div key={i} className="border-r border-slate-900 h-full"></div>)}
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <span className="text-indigo-600 font-bold uppercase tracking-widest text-sm mb-4 inline-block">Web Agency for Startups</span>
-          <h1 className="text-4xl lg:text-7xl font-black text-slate-900 mb-8 leading-tight tracking-tighter">
-            Website Design & Development <br />
-            <span className="text-indigo-600">for Growing Businesses</span>
+      <header className="py-32 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+          <span className="text-brand-purple font-black uppercase tracking-widest text-[11px] mb-8 inline-block bg-brand-purple/10 px-5 py-2.5 rounded-full">Strategic Growth</span>
+          <h1 className="text-6xl lg:text-[110px] font-black text-brand-blue mb-10 tracking-tighter leading-none">
+            Growth-Focused <br /><span className="text-brand-purple">Startup Services.</span>
           </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12">
-            We create websites that generate leads, look professional, and scale with your business. No templates, just high-performance digital systems.
+          <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-14 font-medium">
+            We don't build projects. We build digital business systems that generate ROI while you sleep. Fast, secure, and infinitely scalable.
           </p>
-          <a href="#/contact" className="bg-red-500 hover:bg-red-600 text-white px-10 py-5 rounded-full text-lg font-bold transition-all shadow-xl shadow-red-500/20">
-            Book Free Consultation
+          <a href="#/contact" className="bg-brand-red text-white px-14 py-7 rounded-[2.5rem] text-2xl font-black shadow-xl hover:scale-105 transition-all inline-block">
+            Book a Free Consultation
           </a>
         </div>
       </header>
 
-      {/* 2. Focused Service Blocks (P -> S -> R) */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-            {subServices.map((sub, i) => (
-              <div key={i} className="p-8 rounded-3xl bg-white border border-slate-100 hover:border-indigo-600 hover:shadow-2xl transition-all group">
-                <div className="w-14 h-14 bg-indigo-50 text-indigo-600 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                  {sub.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{sub.title}</h3>
-                <p className="text-slate-500 leading-relaxed">{sub.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-32">
-            {SERVICES.map((s, i) => (
-              <div key={s.id} className={`flex flex-col lg:items-center gap-16 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                <div className="lg:w-1/2">
-                  <div className="w-16 h-16 bg-indigo-50 text-indigo-600 flex items-center justify-center rounded-2xl mb-8">
-                    {s.icon}
-                  </div>
-                  <h2 className="text-4xl font-extrabold text-slate-900 mb-6">{s.title}</h2>
-                  <div className="space-y-6 mb-10">
-                    <div className="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 hover:bg-white hover:shadow-xl transition-all">
-                      <div className="flex gap-4">
-                        <div className="text-red-500 font-black text-lg">P</div>
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="space-y-40">
+            {SERVICES.map((s, i) => {
+              const Icon = iconMap[s.icon] || Globe;
+              return (
+                <div key={s.id} className={`flex flex-col lg:items-center gap-24 ${i % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+                  <div className="lg:w-1/2">
+                    <div className="w-20 h-20 bg-brand-blue/10 text-brand-blue flex items-center justify-center rounded-3xl mb-10 shadow-sm">
+                      <Icon className="w-10 h-10" />
+                    </div>
+                    <h2 className="text-4xl lg:text-7xl font-black text-brand-blue mb-10 leading-tight tracking-tighter">{s.title}</h2>
+                    <p className="text-xl text-slate-500 mb-12 font-medium leading-relaxed">{s.description}</p>
+                    
+                    <div className="space-y-6 mb-16">
+                      <div className="p-10 bg-red-50 rounded-[2.5rem] border border-red-100 flex gap-6 items-start">
+                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-red shrink-0 shadow-sm">
+                           <Target className="w-6 h-6" />
+                        </div>
                         <div>
-                          <h4 className="font-bold text-slate-900 mb-1 uppercase text-xs tracking-widest">The Problem</h4>
-                          <p className="text-slate-600">{s.problem}</p>
+                           <h4 className="font-black text-brand-red mb-2 uppercase text-[11px] tracking-widest">The Problem</h4>
+                           <p className="text-brand-blue font-bold text-lg">{s.problem}</p>
+                        </div>
+                      </div>
+                      <div className="p-10 bg-brand-blue/5 rounded-[2.5rem] border border-brand-blue/10 flex gap-6 items-start">
+                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-blue shrink-0 shadow-sm">
+                           <Zap className="w-6 h-6" />
+                        </div>
+                        <div>
+                           <h4 className="font-black text-brand-blue mb-2 uppercase text-[11px] tracking-widest">The Solution</h4>
+                           <p className="text-slate-700 font-bold text-lg">{s.solution}</p>
+                        </div>
+                      </div>
+                      <div className="p-10 bg-green-50 rounded-[2.5rem] border border-green-100 flex gap-6 items-start">
+                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-green-600 shrink-0 shadow-sm">
+                           {/* Added missing TrendingUp icon from lucide-react */}
+                           <TrendingUp className="w-6 h-6" />
+                        </div>
+                        <div>
+                           <h4 className="font-black text-green-700 mb-2 uppercase text-[11px] tracking-widest">The Result</h4>
+                           <p className="text-brand-blue font-black text-2xl tracking-tight">{s.result}</p>
                         </div>
                       </div>
                     </div>
-                    <div className="p-8 bg-indigo-50 rounded-[2rem] border border-indigo-100 hover:bg-white hover:shadow-xl transition-all">
-                      <div className="flex gap-4">
-                        <div className="text-indigo-600 font-black text-lg">S</div>
-                        <div>
-                          <h4 className="font-bold text-indigo-700 mb-1 uppercase text-xs tracking-widest">Our Solution</h4>
-                          <p className="text-slate-700">{s.solution}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-8 bg-green-50 rounded-[2rem] border border-green-100 hover:bg-white hover:shadow-xl transition-all">
-                      <div className="flex gap-4">
-                        <div className="text-green-600 font-black text-lg">R</div>
-                        <div>
-                          <h4 className="font-bold text-green-700 mb-1 uppercase text-xs tracking-widest">The Result</h4>
-                          <p className="text-slate-800 font-bold">{s.result}</p>
-                        </div>
-                      </div>
+                    
+                    <a href="#/contact" className="inline-flex items-center gap-4 bg-brand-blue text-white px-12 py-6 rounded-2xl font-black hover:bg-brand-purple transition-all group">
+                      Request Free Consultation <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                    </a>
+                  </div>
+                  <div className="lg:w-1/2">
+                    <div className="relative">
+                       <div className="absolute -inset-4 bg-slate-100 rounded-[5rem] -z-10 rotate-3"></div>
+                       <img 
+                        src={`https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200&h=1200&seed=${s.id}`} 
+                        alt={s.title} 
+                        className="rounded-[4rem] shadow-premium w-full object-cover aspect-square border-8 border-white" 
+                       />
                     </div>
                   </div>
-                  <a href="#/contact" className="inline-flex items-center gap-4 bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-indigo-600 transition-all">
-                    Request Free Consultation <ArrowRight className="w-5 h-5" />
-                  </a>
                 </div>
-                <div className="lg:w-1/2">
-                  <div className="relative group">
-                    <div className="absolute inset-0 gradient-bg rounded-[3rem] rotate-3 opacity-10 group-hover:rotate-6 transition-transform"></div>
-                    <img 
-                      src={`https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800&h=800&seed=${s.id}`} 
-                      alt={s.title} 
-                      className="rounded-[3rem] shadow-2xl relative z-10 w-full object-cover aspect-square" 
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 bg-slate-900">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl lg:text-6xl font-black mb-8 leading-tight">Ready to build your <br /><span className="text-indigo-400">digital growth system?</span></h2>
-          <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-medium">Start with our free website audit. We'll show you exactly where you're losing money and how to fix it.</p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a href="#/contact" className="bg-red-500 hover:bg-red-600 text-white px-12 py-6 rounded-full text-2xl font-black transition-all shadow-xl shadow-red-500/20">
-              Get a Free Consultation
-            </a>
-            <a href="https://wa.me/123456789" className="bg-green-600 hover:bg-green-700 text-white px-12 py-6 rounded-full text-2xl font-black transition-all flex items-center justify-center gap-3">
-              <MessageSquare className="w-6 h-6" /> Chat on WhatsApp
-            </a>
-          </div>
+      <section className="py-48 bg-brand-charcoal text-center text-white px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-5xl lg:text-8xl font-black mb-10 leading-tight tracking-tighter">Ready to Build a Website <br /><span className="text-brand-accent italic">That Grows?</span></h2>
+          <p className="text-2xl text-slate-400 mb-14 max-w-2xl mx-auto font-medium">Stop wasting time on digital assets that don't perform. Let's engineer your growth machine today.</p>
+          <a href="#/contact" className="bg-brand-red text-white px-14 py-7 rounded-[2.5rem] text-3xl font-black transition-all hover:scale-105 shadow-2xl shadow-brand-red/30">
+            Get a Free Consultation
+          </a>
         </div>
       </section>
     </div>

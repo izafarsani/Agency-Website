@@ -1,11 +1,21 @@
 
-// Fix: Added React import to provide access to the React namespace for types
-import React from 'react';
+export interface ThemeConfig {
+  brandColor: string;
+  accentColor: string;
+  headerTitle: string;
+  logoText: string;
+  heroHeadline: string;
+  heroSubheadline: string;
+  primaryCTA: string;
+  secondaryCTA: string;
+  footerText: string;
+  whatsappNumber: string;
+}
 
 export interface Service {
   id: string;
   title: string;
-  icon: React.ReactNode;
+  icon: string;
   problem: string;
   solution: string;
   result: string;
@@ -34,4 +44,26 @@ export interface Testimonial {
 export interface FAQItem {
   question: string;
   answer: string;
+}
+
+export interface ProcessStep {
+  id: number;
+  title: string;
+  icon: string;
+  description: string;
+}
+
+export interface ProblemPoint {
+  title: string;
+  description: string;
+}
+
+export interface WPContent {
+  theme: ThemeConfig;
+  services: Service[];
+  caseStudies: CaseStudy[];
+  testimonials: Testimonial[];
+  faqs: FAQItem[];
+  processSteps: ProcessStep[];
+  problemPoints: ProblemPoint[];
 }

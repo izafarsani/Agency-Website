@@ -1,16 +1,20 @@
 
 import React from 'react';
-import { CASE_STUDIES } from '../constants';
+import { useContent } from '../App';
 import { ArrowUpRight, TrendingUp, Target, Zap } from 'lucide-react';
 
 const Portfolio: React.FC = () => {
+  const { content } = useContent();
+  const CASE_STUDIES = content.caseStudies;
+
   return (
     <div className="pt-20">
       <header className="py-24 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl lg:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-none">Our Work That <br /><span className="text-indigo-600">Drives Results.</span></h1>
+          <span className="text-brand-red font-black uppercase tracking-widest text-xs mb-6 inline-block">Case Studies</span>
+          <h1 className="text-5xl lg:text-8xl font-black text-brand-blue mb-8 tracking-tighter leading-none">Our Results Speak <br /><span className="text-brand-red italic">Louder.</span></h1>
           <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-            We focus on metrics that matter. More leads, more sales, and more time saved. Explore exactly how we've moved the needle for our partners.
+            We focus on metrics that move the needle. Funding secured, revenue increased, and time saved. Explore how we scale our partners.
           </p>
         </div>
       </header>
@@ -19,67 +23,63 @@ const Portfolio: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-32">
             {CASE_STUDIES.map((project, i) => (
-              <div key={project.id} className={`grid lg:grid-cols-2 gap-16 items-start ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                <div className="order-2 lg:order-none">
+              <div key={project.id} className={`grid lg:grid-cols-2 gap-20 items-start ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                <div>
                   <div className="flex items-center gap-3 mb-8">
-                    <span className="px-4 py-1.5 bg-indigo-50 text-indigo-600 text-xs font-black uppercase tracking-widest rounded-full">{project.category}</span>
-                    <span className="text-slate-300 font-mono text-xs">CS-00{project.id}</span>
+                    <span className="px-4 py-2 bg-brand-blue/5 text-brand-blue text-[10px] font-black uppercase tracking-widest rounded-lg">{project.category}</span>
                   </div>
-                  <h2 className="text-4xl lg:text-6xl font-black text-slate-900 mb-12 tracking-tight">{project.title}</h2>
+                  <h2 className="text-4xl lg:text-7xl font-black text-brand-blue mb-12 tracking-tight leading-none">{project.title}</h2>
                   
-                  <div className="space-y-12">
+                  <div className="space-y-10">
                     <div className="group">
-                      <div className="flex gap-4 items-start">
-                        <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-red-50 transition-colors">
-                          <Target className="w-5 h-5 text-slate-400 group-hover:text-red-500" />
+                      <div className="flex gap-6 items-start">
+                        <div className="w-12 h-12 bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:text-brand-red transition-all">
+                          <Target className="w-6 h-6" />
                         </div>
                         <div>
-                          <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">The Challenge</h4>
-                          <p className="text-xl text-slate-700 leading-relaxed font-medium">{project.problem}</p>
+                          <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">The Bottleneck</h4>
+                          <p className="text-xl text-slate-700 leading-relaxed font-bold">{project.problem}</p>
                         </div>
                       </div>
                     </div>
 
                     <div className="group">
-                      <div className="flex gap-4 items-start">
-                        <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-indigo-50 transition-colors">
-                          <Zap className="w-5 h-5 text-slate-400 group-hover:text-indigo-600" />
+                      <div className="flex gap-6 items-start">
+                        <div className="w-12 h-12 bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-purple group-hover:text-white transition-all">
+                          <Zap className="w-6 h-6" />
                         </div>
                         <div>
-                          <h4 className="text-xs font-black text-indigo-600 uppercase tracking-widest mb-2">Our Solution</h4>
-                          <p className="text-xl text-slate-700 leading-relaxed font-medium">{project.solution}</p>
+                          <h4 className="text-[10px] font-black text-brand-purple uppercase tracking-widest mb-2">The Fix</h4>
+                          <p className="text-xl text-slate-700 leading-relaxed font-bold">{project.solution}</p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="bg-indigo-600 p-10 rounded-[3rem] text-white shadow-2xl shadow-indigo-200 relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
-                        <TrendingUp className="w-24 h-24" />
+                    <div className="bg-brand-blue p-12 rounded-[3.5rem] text-white shadow-2xl relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:scale-110 transition-transform">
+                        <TrendingUp className="w-32 h-32" />
                       </div>
                       <div className="relative z-10">
-                        <h4 className="text-xs font-black text-indigo-200 uppercase tracking-widest mb-3">Key Result</h4>
-                        <p className="text-3xl lg:text-4xl font-black leading-tight">{project.result}</p>
+                        <h4 className="text-[10px] font-black text-indigo-300 uppercase tracking-widest mb-4">Final Result</h4>
+                        <p className="text-3xl lg:text-5xl font-black leading-none">{project.result}</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="mt-16">
-                    <button className="flex items-center gap-3 text-slate-900 text-lg font-black hover:text-indigo-600 hover:gap-5 transition-all">
-                      Explore Live Project <ArrowUpRight className="w-6 h-6" />
+                    <button className="flex items-center gap-4 text-brand-blue text-xl font-black hover:text-brand-red hover:gap-6 transition-all group">
+                      Explore Project <ArrowUpRight className="w-6 h-6 group-hover:rotate-45 transition-transform" />
                     </button>
                   </div>
                 </div>
 
-                <div className="order-1 lg:order-none sticky top-32">
-                  <div className="relative">
-                    <div className="absolute -inset-6 gradient-bg opacity-10 rounded-[4rem] rotate-2"></div>
-                    <div className="overflow-hidden rounded-[3.5rem] shadow-2xl border-8 border-white">
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full object-cover aspect-[4/5] hover:scale-105 transition-transform duration-1000"
-                      />
-                    </div>
+                <div className="sticky top-32">
+                  <div className="relative overflow-hidden rounded-[4rem] shadow-2xl border-8 border-white aspect-[4/5]">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                    />
                   </div>
                 </div>
               </div>
@@ -88,14 +88,11 @@ const Portfolio: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 bg-slate-50 border-t border-slate-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-6xl font-black text-slate-900 mb-8 leading-tight">Ready to be our next <br />success story?</h2>
-          <p className="text-xl text-slate-500 mb-12">We only partner with businesses we know we can help. Let's find out if we're a match.</p>
-          <a href="#/contact" className="inline-block bg-red-500 hover:bg-red-600 text-white px-12 py-6 rounded-full font-black text-2xl hover:bg-red-600 transition-all shadow-2xl shadow-red-500/20">
-            Book Your Free Strategy Call
-          </a>
-        </div>
+      <section className="py-24 bg-slate-50 text-center">
+        <h2 className="text-4xl lg:text-7xl font-black text-brand-blue mb-10 tracking-tight">Ready for your <br /><span className="text-brand-purple">ROI Boost?</span></h2>
+        <a href="#/contact" className="inline-block bg-brand-red text-white px-12 py-6 rounded-2xl font-black text-2xl shadow-xl hover:scale-105 transition-all">
+          Start Your Case Study
+        </a>
       </section>
     </div>
   );
