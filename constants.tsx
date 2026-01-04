@@ -5,8 +5,8 @@ export const DEFAULT_WP_CONTENT: WPContent = {
   theme: {
     brandColor: '#0F172A',
     accentColor: '#38BDF8',
-    headerTitle: 'PixionStudio',
-    logoText: 'PixionStudio',
+    headerTitle: 'Pixion Studio',
+    logoText: 'Pixion Studio',
     heroHeadline: 'We Help Startups Build, Scale, and Automate Their Growth',
     heroSubheadline: 'From high-converting websites and branding to AI-powered systems — we help you grow faster with smart digital foundations.',
     primaryCTA: 'Book a Free Strategy Call',
@@ -135,6 +135,8 @@ export const DEFAULT_WP_CONTENT: WPContent = {
     }
   ]
 };
+
+export const LOGO_PURPLE = 'https://generativelanguage.googleapis.com/v1beta/files/input_file_1.png';
 
 export const CLIENT_LOGOS = [
   'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',

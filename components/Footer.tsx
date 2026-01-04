@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Rocket, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 import { useContent } from '../App';
+import { LOGO_PURPLE } from '../constants';
 
 const Footer: React.FC = () => {
   const { content } = useContent();
@@ -15,13 +16,12 @@ const Footer: React.FC = () => {
           
           {/* Brand Info */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="bg-brand-blue p-2 rounded-xl">
-                <Rocket className="text-white w-6 h-6" />
-              </div>
-              <span className="text-2xl font-black text-white tracking-tighter">
-                {content.theme.headerTitle}
-              </span>
+            <div className="flex items-center gap-2 mb-8">
+              <img 
+                src={LOGO_PURPLE} 
+                alt="Pixion Studio" 
+                className="h-10 w-auto object-contain brightness-0 invert opacity-90"
+              />
             </div>
             <p className="text-slate-400 mb-8 leading-relaxed font-medium max-w-sm">
               {content.theme.footerText}
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
 
         {/* Footer Sub-bar */}
         <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-500 gap-6">
-          <p>© 2024 {content.theme.headerTitle}. Driven by Strategy.</p>
+          <p>© 2024 Pixion Studio. Driven by Strategy.</p>
           <div className="flex gap-8">
             <a href="#/legal" className="hover:text-white transition-colors">Terms</a>
             <a href="#/legal" className="hover:text-white transition-colors">Privacy</a>

@@ -56,18 +56,18 @@ const App: React.FC = () => {
         <ScrollToTop />
         <div className="flex flex-col min-h-screen selection:bg-brand-purple selection:text-white">
           
-          {/* Simulated WP Admin Bar */}
+          {/* Simulated WP Admin Bar - Responsive height */}
           {isAdmin && (
-            <div className="fixed top-0 left-0 w-full h-10 bg-slate-900 z-[100] flex items-center justify-between px-4 text-xs font-bold text-slate-300 border-b border-white/10 backdrop-blur-md">
-              <div className="flex items-center gap-4">
+            <div className="fixed top-0 left-0 w-full h-10 bg-slate-900 z-[100] flex items-center justify-between px-4 text-[10px] sm:text-xs font-bold text-slate-300 border-b border-white/10 backdrop-blur-md">
+              <div className="flex items-center gap-2 sm:gap-4">
                 <span className="flex items-center gap-2 text-white">
-                  <Settings className="w-3 h-3" /> WP-Theme Admin Mode
+                  <Settings className="w-3 h-3" /> <span className="hidden xs:inline">WP Admin</span>
                 </span>
-                <button onClick={saveContent} className="flex items-center gap-1.5 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-500 transition-colors">
-                  <Save className="w-3 h-3" /> Update Theme
+                <button onClick={saveContent} className="flex items-center gap-1.5 bg-blue-600 text-white px-2 sm:px-3 py-1 rounded hover:bg-blue-500 transition-colors">
+                  <Save className="w-3 h-3" /> Update
                 </button>
-                <button onClick={resetContent} className="flex items-center gap-1.5 bg-slate-700 px-3 py-1 rounded hover:bg-slate-600 transition-colors">
-                  <RefreshCw className="w-3 h-3" /> Reset Defaults
+                <button onClick={resetContent} className="hidden sm:flex items-center gap-1.5 bg-slate-700 px-3 py-1 rounded hover:bg-slate-600 transition-colors">
+                  <RefreshCw className="w-3 h-3" /> Reset
                 </button>
               </div>
               <button onClick={() => setIsAdmin(false)} className="text-slate-500 hover:text-white transition-colors">
@@ -91,11 +91,11 @@ const App: React.FC = () => {
           
           <Footer />
           
-          {/* Sticky Mobile CTA - REFINED FOR CONVERSION */}
+          {/* Sticky Mobile CTA - Responsive visibility */}
           <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] z-40">
             <a 
               href="#/contact" 
-              className="block w-full bg-brand-red text-white text-center py-5 rounded-[1.5rem] font-black text-lg shadow-premium shadow-brand-red/30 active:scale-95"
+              className="block w-full bg-brand-red text-white text-center py-4 sm:py-5 rounded-[1.2rem] sm:rounded-[1.5rem] font-black text-base sm:text-lg shadow-premium shadow-brand-red/30 active:scale-95"
             >
               Get Free Strategy Session
             </a>
